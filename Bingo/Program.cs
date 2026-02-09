@@ -17,15 +17,20 @@ namespace Bingo
         static void Main(string[] args)
         {
 
-            drawnBalls[1, 0] = true;
-            drawnBalls[4, 14] = true;
-            drawnBalls[0, 0] = true;
-            drawnBalls[2, 5] = true;
-            drawnBalls[4, 13] = true;
+            //drawnBalls[1, 0] = true;
+            //drawnBalls[4, 14] = true;
+            //drawnBalls[0, 0] = true;
+            //drawnBalls[2, 5] = true;
+            //drawnBalls[4, 13] = true;
 
-
-            DrawBall();
-            //ShowDisplay();
+            do
+            {
+                Console.Clear();
+                ShowDisplay();
+                DrawBall();
+                Console.ReadLine(); //Unexpected function. If it was Console.Read() it will print two balls. Not sure why.
+            } while (true);
+            
 
 
 
@@ -37,7 +42,7 @@ namespace Bingo
         {
             int padding = 3;
             int prettyNumber;
-            string placeHolder = "X";
+            string placeHolder = "";
             string currentRow = "";
             string collumnSeparator = "  |";
             string[] heading = { "B", "I", "N", "G", "O" };
@@ -71,10 +76,15 @@ namespace Bingo
         }
         static void DrawBall()
         {
-            for (int i = 0; i < 100; i++);
+            int letter = 0, number = 0;
+            do
             {
-                Console.WriteLine(RandomNumberZeroTo(14));
-            }
+                letter = RandomNumberZeroTo(4);
+                number = RandomNumberZeroTo(14);
+
+            } while (drawnBalls[letter, number]);
+
+            drawnBalls[letter, number] = true;
         }
         /// <summary>
         /// Get a random integer from 0 to max of your choice inclusive
