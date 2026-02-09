@@ -1,22 +1,23 @@
 ﻿/*TODO
- * [ ] Track bingo balls drawn in a two dimensional array
- * [x] Display status of all balls on the console
+ * [X] Track bingo balls drawn in a two dimensional array
+ * [X] Display status of all balls on the console
  * [ ] Clear all drawn balls to start a new game
- * [ ] Let the user quit 
- * [ ] Draw a random ball
- * [ ] Get a random number to determine ball letter
- * [ ] Get a random number to determine ball number
- * [ ] Check if ball has already been drawn. No: mark as drawn, yes: draw another
+ * [X] Let the user quit 
+ * [X] Draw a random ball
+ * [X] Get a random number to determine ball letter
+ * [X] Get a random number to determine ball number
+ * [X] Check if ball has already been drawn. No: mark as drawn, yes: draw another
  */
 namespace Bingo
 {
     internal class Program
     {
+        
         //make this a global variable
         static bool[,] drawnBalls = new bool[5,15];
         static void Main(string[] args)
         {
-
+            string userInput = "";
             //drawnBalls[1, 0] = true;
             //drawnBalls[4, 14] = true;
             //drawnBalls[0, 0] = true;
@@ -28,8 +29,9 @@ namespace Bingo
                 Console.Clear();
                 ShowDisplay();
                 DrawBall();
-                Console.ReadLine(); //Unexpected function. If it was Console.Read() it will print two balls. Not sure why.
-            } while (true);
+                userInput = Console.ReadLine(); //Unexpected function. If it was Console.Read() it will print two balls. Not sure why.
+                
+            } while (userInput != "Q" && userInput != "q");
             
 
 
