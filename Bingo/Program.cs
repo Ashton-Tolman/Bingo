@@ -1,7 +1,7 @@
 ﻿/*TODO
  * [X] Track bingo balls drawn in a two dimensional array
  * [X] Display status of all balls on the console
- * [ ] Clear all drawn balls to start a new game
+ * [X] Clear all drawn balls to start a new game
  * [X] Let the user quit 
  * [X] Draw a random ball
  * [X] Get a random number to determine ball letter
@@ -17,23 +17,34 @@ namespace Bingo
         static bool[,] drawnBalls = new bool[5,15];
         static void Main(string[] args)
         {
+            int ballCount = 0;
             string userInput = "";
             //drawnBalls[1, 0] = true;
             //drawnBalls[4, 14] = true;
             //drawnBalls[0, 0] = true;
             //drawnBalls[2, 5] = true;
             //drawnBalls[4, 13] = true;
-
+           
             do
             {
                 Console.Clear();
-                ShowDisplay();
+                Console.WriteLine($"Press \"Q\" to quit." +
+                    $"\nPress \"C\" to clear the board." +
+                    $"\nCount will reset once board is filled.");
                 DrawBall();
+                ShowDisplay();
+                ballCount++;
+                Console.WriteLine($"Ball count = \"{ballCount}\"");
                 userInput = Console.ReadLine(); //Unexpected function. If it was Console.Read() it will print two balls. Not sure why.
-                
+                if (userInput == "c" || userInput == "C" || ballCount == 75)
+                {
+                    ClearBalls();
+                    ballCount = 0;
+                }
             } while (userInput != "Q" && userInput != "q");
+            Console.WriteLine("Thanks for playing!");
+        
             
-
 
 
             //pause
@@ -99,6 +110,12 @@ namespace Bingo
             Random rand = new Random();
             return rand.Next(range);
             
+        }
+
+        static void ClearBalls()
+        {
+            drawnBalls = new bool[5, 15];
+
         }
     }
 }
