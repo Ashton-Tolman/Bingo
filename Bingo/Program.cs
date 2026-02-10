@@ -30,14 +30,23 @@ namespace Bingo
                 Console.Clear();
                 Console.WriteLine($"Press \"Q\" to quit." +
                     $"\nPress \"C\" to clear the board." +
-                    $"\nCount will reset once board is filled.");
+                    $"\nCount will reset once board is filled." +
+                    $"\nPress Enter to draw a ball and start playing!");
                 DrawBall();
                 ShowDisplay();
                 ballCount++;
                 Console.WriteLine($"Ball count = \"{ballCount}\"");
                 userInput = Console.ReadLine(); //Unexpected function. If it was Console.Read() it will print two balls. Not sure why.
-                if (userInput == "c" || userInput == "C" || ballCount == 75)
+                if (userInput == "c" || userInput == "C")
                 {
+                    ClearBalls();
+                    ballCount = 0;
+                }
+                else if (ballCount == 75)
+                {
+                    Console.WriteLine($"BLACKOUT!!!!!!Thanks for playing!" +
+                                      $"\nClearing Board....");
+                    Console.ReadLine();
                     ClearBalls();
                     ballCount = 0;
                 }
