@@ -31,7 +31,7 @@ namespace Bingo
                 Console.WriteLine($"Press \"Q\" to quit." +
                     $"\nPress \"C\" to clear the board." +
                     $"\nCount will reset once board is filled." +
-                    $"\nPress Enter to draw a ball and start playing!");
+                    $"\nPress \"Enter\" to draw a ball and start playing!");
                 DrawBall();
                 ShowDisplay();
                 ballCount++;
